@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include <queue>
+#include <stack>
 #include <iomanip>
 using namespace std;
 
@@ -16,11 +16,11 @@ int main() {
 		}
 	}
 	int maxNum = 0;
-	queue<pair<vector<vector<int>>, int>> q;
-	q.push(make_pair(v, 0));
-	while (!q.empty()) {
-		pair<vector<vector<int>>, int> cur = q.front();
-		q.pop();
+	stack<pair<vector<vector<int>>, int>> s;
+	s.push(make_pair(v, 0));
+	while (!s.empty()) {
+		pair<vector<vector<int>>, int> cur = s.top();
+		s.pop();
 		vector<vector<int>> status = cur.first;
 		int cnt = cur.second;
 		for (int i = 0; i < n; i++) {
@@ -59,7 +59,7 @@ int main() {
 					temp1[i][j] = 0;
 				}
 			}
-			q.push(make_pair(temp1, cnt + 1));
+			s.push(make_pair(temp1, cnt + 1));
 			// 왼쪽
 			vector<vector<int>> temp2 = status;
 			for (int i = 0; i < n; i++) {
@@ -88,7 +88,7 @@ int main() {
 					temp2[i][j] = 0;
 				}
 			}
-			q.push(make_pair(temp2, cnt + 1));
+			s.push(make_pair(temp2, cnt + 1));
 			// 아래
 			vector<vector<int>> temp3 = status;
 			for (int j = 0; j < n; j++) {
@@ -117,7 +117,7 @@ int main() {
 					temp3[i][j] = 0;
 				}
 			}
-			q.push(make_pair(temp3, cnt + 1));
+			s.push(make_pair(temp3, cnt + 1));
 			// 오른쪽
 			vector<vector<int>> temp4 = status;
 			for (int i = 0; i < n; i++) {
@@ -146,7 +146,7 @@ int main() {
 					temp4[i][j] = 0;
 				}
 			}
-			q.push(make_pair(temp4, cnt + 1));
+			s.push(make_pair(temp4, cnt + 1));
 
 		}
 	}
