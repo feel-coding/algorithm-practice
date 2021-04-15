@@ -38,9 +38,6 @@ int solution(vector<string> lines) {
 			if (startTime - iMillisecond <= 999) {
 				cnt++;
 			}
-			else {
-				break;
-			}
 		}
 		if (cnt > maxCount) {
 			maxCount = cnt;
